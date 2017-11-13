@@ -1,5 +1,9 @@
+
+###Install Proper package
 install.packages("dplyr");
 library(dplyr);
+
+###Download data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 RServe
 if(!file.exists("./data")){dir.create("./data")}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
@@ -7,7 +11,7 @@ download.file(fileUrl,destfile="./data/Dataset.zip",method="curl")
 
 unzip(zipfile="./data/Dataset.zip",exdir="./data")
 
-
+###Read downloaded files and create tables
 dataActivityTest  <- read.table(file.path(path_rf, "test" , "Y_test.txt" ),header = FALSE)
 dataActivityTrain <- read.table(file.path(path_rf, "train", "Y_train.txt"),header = FALSE)
 
@@ -34,10 +38,10 @@ x_test <- read.table("./data/UCI HAR Dataset/test/X_test.txt")
 y_test <- read.table("./data/UCI HAR Dataset/test/y_test.txt")
 subject_test <- read.table("./data/UCI HAR Dataset/test/subject_test.txt")
 
-# Reading feature vector:
+# Read feature vector:
 features <- read.table('./data/UCI HAR Dataset/features.txt')
 
-# Reading activity labels:
+# Read activity labels:
 activityLabels = read.table('./data/UCI HAR Dataset/activity_labels.txt')
 
 colnames(x_train) <- features[,2] 
